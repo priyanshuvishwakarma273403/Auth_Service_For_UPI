@@ -2,6 +2,7 @@ package com.authService.repository;
 
 import com.authService.entity.RefreshToken;
 import com.authService.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.Optional;
  * - Rotation: refresh token use hone par naya token milta hai, purana delete
  */
 
-public interface RefreshTokenRepository {
+public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
     Optional<RefreshToken> findByToken(String token);
 
     Optional<RefreshToken> findByUser(User user);
@@ -36,4 +37,7 @@ public interface RefreshTokenRepository {
     int deleteExpiredTokens(Instant now);
 
     boolean existsByUser(User user);
+
+
+
 }
