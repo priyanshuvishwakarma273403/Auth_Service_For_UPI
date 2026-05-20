@@ -60,7 +60,6 @@ public class RedisConfig {
         return RedisCacheManager.builder(factory)
                 .cacheDefaults(config)
                 .build();
-
     }
 
 }
